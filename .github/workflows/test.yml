@@ -38,17 +38,16 @@ jobs:
       - run: npm install @autifyhq/autify-cli-integration-test
       - run: npx autify-mobile-generate-fake-app
 
-# TODO: Record iOS upload in @autifyhq/autify-cli-integration-test
-#      - id: mobile-build-upload-ios
-#        uses: ./
-#        with:
-#          access-token: token
-#          autify-path: ./node_modules/.bin/autify-with-proxy
-#          workspace-id: AAA
-#          build-path: ./ios.app
-#      - run: test ${{ steps.web-test-run.outputs.exit-code }} = 0
-#      - run: echo "${{ steps.web-test-run.outputs.log }}" | grep "Successfully uploaded"
-#      - run: test -n ${{ steps.web-test-run.outputs.build-id }}
+      - id: mobile-build-upload-ios
+        uses: ./
+        with:
+          access-token: token
+          autify-path: ./node_modules/.bin/autify-with-proxy
+          workspace-id: AAA
+          build-path: ./ios.app
+      - run: test ${{ steps.mobile-build-upload-ios.outputs.exit-code }} = 0
+      - run: echo "${{ steps.mobile-build-upload-ios.outputs.log }}" | grep "Successfully uploaded"
+      - run: test -n ${{ steps.mobile-build-upload-ios.outputs.build-id }}
 
       - id: mobile-build-upload-android
         uses: ./
