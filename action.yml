@@ -1,0 +1,42 @@
+name: 'Upload build to Autify for Mobile'
+description: 'Upload a build file to Autify for Mobile.'
+author: 'Autify Inc.'
+inputs:
+  access-token:
+    required: true
+    description: 'Access token of Autify for Mobile.'
+  workspace-id:
+    required: true
+    description: 'Workspace ID to upload the build file.'
+  build-path:
+    required: true
+    description: 'File path to the iOS app (*.app) or Android app (*.apk).'
+  autify-path:
+    required: false
+    default: 'autify'
+    description: 'A path to `autify`. If set, this action will not install autify-cli.'
+
+outputs:
+  exit-code:
+    description: 'Exit code of autify-cli. 0 means succeeded.'
+    value: ${{ steps.run.outputs.exit-code }}
+  build-id:
+    description: 'Returned build id on the workspace.'
+    value: ${{ steps.run.outputs.build-id }}
+  log:
+    description: 'Log of stdout and stderr.'
+    value: ${{ steps.run.outputs.log }}
+
+runs:
+  using: 'composite'
+  steps:
+    - uses: autifyhq/actions-setup-cli@v1
+      if: ${{ inputs.autify-path == 'autify' }}
+    - id: run
+      run: $GITHUB_ACTION_PATH/script.bash
+      shell: bash
+      env:
+        INPUT_ACCESS_TOKEN: ${{ inputs.access-token }}
+        INPUT_BUILD_PATH: ${{ inputs.build-path }}
+        INPUT_WORKSPACE_ID: ${{ inputs.workspace-id }}
+        INPUT_AUTIFY_PATH: ${{ inputs.autify-path }}
