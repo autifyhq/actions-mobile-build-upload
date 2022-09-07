@@ -5,7 +5,7 @@
 # Upload build to Autify for Mobile
 Upload a build file to Autify for Mobile.
 
-See also https://github.com/autifyhq/autify-cli#autify-mobile-build-upload-build-path
+See our official documentation to get started: https://help.autify.com/mobile/docs/github-actions-integration
 
 ## Usage
 
