@@ -14,7 +14,7 @@ inputs:
   autify-path:
     required: false
     default: 'autify'
-    description: 'A path to `autify`. If set, this action will not install autify-cli.'
+    description: 'A path to `autify` which will be used to invoke Autify CLI internally. Default is searching from PATH.'
   autify-cli-installer-url:
     required: false
     default: "https://autify-cli-assets.s3.amazonaws.com/autify-cli/channels/stable/install-cicd.bash"
