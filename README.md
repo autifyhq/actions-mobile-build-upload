@@ -13,7 +13,7 @@ See our official documentation to get started: https://help.autify.com/mobile/do
 ### Upload iOS build file to Autify for Mobile
 
 ```yaml
-- uses: autifyhq/actions-mobile-build-upload@v1
+- uses: autifyhq/actions-mobile-build-upload@v2
   with:
     access-token: ${{ secrets.AUTIFY_MOBILE_ACCESS_TOKEN }}
     workspace-id: AAA
@@ -23,7 +23,7 @@ See our official documentation to get started: https://help.autify.com/mobile/do
 ### Upload Android build file to Autify for Mobile
 
 ```yaml
-- uses: autifyhq/actions-mobile-build-upload@v1
+- uses: autifyhq/actions-mobile-build-upload@v2
   with:
     access-token: ${{ secrets.AUTIFY_MOBILE_ACCESS_TOKEN }}
     workspace-id: AAA
