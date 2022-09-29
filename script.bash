@@ -33,6 +33,8 @@ else
   exit_script 1
 fi
 
+export AUTIFY_CLI_USER_AGENT_SUFFIX="${AUTIFY_CLI_USER_AGENT_SUFFIX:=github-actions-mobile-build-upload}"
+
 OUTPUT=$(mktemp)
 AUTIFY_MOBILE_ACCESS_TOKEN=${INPUT_ACCESS_TOKEN} ${AUTIFY} mobile build upload "${ARGS[@]}" 2>&1 | tee "$OUTPUT"
 exit_code=${PIPESTATUS[0]}
